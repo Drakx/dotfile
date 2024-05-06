@@ -42,6 +42,7 @@
 (require 'kw-frames)
 (require 'kw-fonts)
 (require 'kw-shell)
+(require 'kw-root-edit)
 
 ;; If you prefer evil mode, set kw/evil-enabled t
 (setq kw/evil-enabled nil)
