@@ -903,3 +903,8 @@ nanorc.save
 config/helix/runtime
 Brewfile.lock.json
 nvim/plugin/packer_compiled.lua
+/.extension/
+/custom.el
+/eln-cache/
+/history
+/transient/
