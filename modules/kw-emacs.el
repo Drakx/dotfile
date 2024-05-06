@@ -64,10 +64,14 @@
            (mu4e-alert-enable-mode-line-display)            ;; also enable the start of mu4e-alert
            (setq doom-modeline-icon t)))
 
-;; Display the battery in the modeline
-(use-package battery
-  :ensure t
-  :hook (after-init . display-battery-mode))
+;; If we are on a laptop then display the battery in the mode line.
+;; 'kw/laptop-p' located in 'kw-functions.el'
+(if (kw/laptop-p)
+    (progn
+      ;; Display the battery in the modeline
+      (use-package battery
+	:ensure t
+	:hook (after-init . display-battery-mode))))
 
 
 ;; Global keybinds

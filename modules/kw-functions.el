@@ -153,5 +153,10 @@ folder, otherwise delete a character backwards"
   "Ask for users email for encryption"
   (interactive "sEnter email address to use for encryption: "))
 
+(defun kw/laptop-p ()
+  "Check if the system is a laptop."
+  (interactive)
+  (string-match-p "battery" (shell-command-to-string "ls /sys/class/power_supply")))
+
 
 (provide 'kw-functions)
