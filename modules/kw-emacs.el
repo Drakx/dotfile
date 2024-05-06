@@ -40,11 +40,11 @@
   (defun kw/config-visit ()
     "Visit the Emacs init.el file"
     (interactive)
-    (find-file "~/tmp/emacs.d/init.el"))
+    (find-file "~/.emacs.d/init.el"))
   (defun kw/reload-emacs-with-new-changes ()
     "Reload the Emacs init.el"
     (interactive)
-    (load-file "~/tmp/emacs.d/init.el"))
+    (load-file "~/.emacs.d/init.el"))
 
   :init
   (defalias 'yes-or-no-p 'y-or-n-p)                         ;; Remove the need to type 'yes' over 'y'

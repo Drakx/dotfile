@@ -25,7 +25,7 @@
 ;;
 ;;
 ;; Add configuration modules to load path
-(add-to-list 'load-path '"~/tmp/emacs.d/modules")
+(add-to-list 'load-path '"~/.emacs.d/modules")
 (setq custom-file (expand-file-name "custom.el" "~/.emacs.d"))
 (when (file-exists-p custom-file)
   (load custom-file))

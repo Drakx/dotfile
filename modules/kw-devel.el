@@ -111,35 +111,35 @@
 ;; Debugging
 ;; Dap mode allows us to debug apps within emacs, for easier use run ~dap-hydra~ and you'll be
 ;; presented with a very easy to follow/use menu mode
-;; The python stuff is taken from [[https://emacs-lsp.github.io/dap-mode/page/python-poetry-pyenv/][here]]
-(use-package dap-mode
-  :after lsp-mode
-  :ensure t
-  :commands dap-debug
-  :hook ((lsp-mode . dap-mode)
-         (python-mode . dap-ui-mode)
-         (python-mode . dap-mode)
-         (go-mode . dap-mode)
-         (go-mode . dap-ui-mode))
-  :config
-  (require 'dap-hydra)
-  (require 'dap-go)
-  (require 'dap-python)
-  (setq dap-python-debugger 'debugpy)
-  (defun dap-python--pyenv-executable-find (command)
-    (with-venv (executable-find "python")))
-  (dap-go-setup)
-  (dap-ui-mode 1)
-  (dap-tooltip-mode 1);; Enable mouse hover support
-  (dap-ui-controls-mode 1)
-  ;; Bind `C-c l d` to `dap-hydra` for easy access
-  (general-define-key
-   :keymaps 'lsp-mode-map
-   :prefix lsp-keymap-prefix "d" '(dap-hydra t :wk "debugger"))
-  ;;:custom dap-auto-configure-features '(sessions locals controls tooltip)
-  ;;(dap-mode 1)
+;; The python stuff is taken from https://emacs-lsp.github.io/dap-mode/page/python-poetry-pyenv/
+;; (use-package dap-mode
+;;   :after lsp-mode
+;;   :ensure t
+;;   :commands dap-debug
+;;   :hook ((lsp-mode . dap-mode)
+;;          (python-mode . dap-ui-mode)
+;;          (python-mode . dap-mode)
+;;          (go-mode . dap-mode)
+;;          (go-mode . dap-ui-mode))
+;;   :config
+;;   (require 'dap-hydra)
+;;   (require 'dap-go)
+;;   (require 'dap-python)
+;;   (setq dap-python-debugger 'debugpy)
+;;   (defun dap-python--pyenv-executable-find (command)
+;;     (with-venv (executable-find "python")))
+;;   (dap-go-setup)
+;;   (dap-ui-mode 1)
+;;   (dap-tooltip-mode 1);; Enable mouse hover support
+;;   (dap-ui-controls-mode 1)
+;;   ;; Bind `C-c l d` to `dap-hydra` for easy access
+;;   (general-define-key
+;;    :keymaps 'lsp-mode-map
+;;    :prefix lsp-keymap-prefix "d" '(dap-hydra t :wk "debugger"))
+;;   ;;:custom dap-auto-configure-features '(sessions locals controls tooltip)
+;;   ;;(dap-mode 1)
 
-  (add-hook 'dap-stopped-hook
-            (lambda (arg) (call-interactively #'dap-hydra))))
+;;   (add-hook 'dap-stopped-hook
+;;             (lambda (arg) (call-interactively #'dap-hydra))))
 
 (provide 'kw-devel)
