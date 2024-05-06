@@ -1,0 +1,39 @@
+#+TITLE: README
+#+AUTHOR: Kai Windle
+#+EMAIL: kai@windle.io
+#+DATE: 05/04/2024
+#+STARTUP: overview
+
+* Key maps
+  | Key combination | Action                                  |
+  |-----------------+-----------------------------------------|
+  | C-c C-l         | Create Hyperlink in org-mode            |
+  | C-c C-o         | Open link at point                      |
+  | C-c C-v t       | Tangle org-mode elips code              |
+  | C-c C-c         | Align table in org-mode                 |
+  | C-x /           | Search some sites with input from emacs |
+  | C-j             | Jump down to next bullet point in org   |
+  | C-k             | Jump up to next bullet point in org     |
+  | C-c t           | Open vterm                              |
+  | C-c x           | Open multi-vterm                        |
+  | C-SPC           | Increase font size                      |
+  | C-SPC           | Choose a theme                          |
+  | M-SPC           | Mac OS Counsel app launcher             |
+  | M-/             | Comment code using evil commenter       |
+  | C-c C-c         | Execute a request with restclient       |
+  | C-c C-u         | Copy the curl request in restclient     |
+  | C-c l d         | Access Dap Hydra                        |
+  | C-x g           | Magit/Git status                        |
+  | C-.             | Embark actions                          |
+  | C-d             | Embark act                              |
+
+* Custom variables
+There are a some custom variables that can be enable for some niceties such as [[https://github.com/tumashu/vertico-posframe][~Vertico Posframe~]]
+
+** Vertico
+*** Posframe
+=modules/kw-completion/kw/posframe=
+
+** Evil mode
+If you prefer to use evil mode, then enable and reload Emacs
+=init.el/kw-evil=
