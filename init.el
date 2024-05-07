@@ -22,6 +22,7 @@
 ;; | C-x g           | Magit/Git status                        |
 ;; | C-.             | Embark actions                          |
 ;; | C-d             | Embark act                              |
+;; | C-% (C-shift 5) | Jump to matching brackets and back      |
 ;;
 ;;
 ;; Add configuration modules to load path
@@ -55,3 +56,4 @@
 (require 'kw-rest)
 (require 'kw-www)
 (require 'kw-encryption)
+(require 'kw-keyboard)

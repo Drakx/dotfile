@@ -158,5 +158,19 @@ folder, otherwise delete a character backwards"
   (interactive)
   (string-match-p "battery" (shell-command-to-string "ls /sys/class/power_supply")))
 
+(defun my-jump-to-matching-bracket ()
+  "Jump to the matching bracket."
+  (interactive)
+  (cond
+   ;; If the character under point is an opening bracket, jump to the matching closing bracket
+   ((looking-at "\\s(\\|\\s{\\|\\s<") (forward-sexp 1))
+   ;; If the character under point is a closing bracket, jump to the matching opening bracket
+   ((looking-back "\\s)\\|\\s}\\|\\s>") (backward-sexp 1))
+   ;; Otherwise, do nothing
+   (t (message "Not on a bracket"))))
+
+(global-set-key (kbd "C-%") 'my-jump-to-matching-bracket)
+
+
 
 (provide 'kw-functions)
