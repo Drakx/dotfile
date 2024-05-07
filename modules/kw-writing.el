@@ -31,4 +31,22 @@
   :config
   (add-to-list 'writegood-weasel-words "actionable"))
 
+(global-visual-line-mode t)
+
+;; Turn on wrapping of paragraphs
+(dolist (mode '(term-mode-hook
+                shell-mode-hook
+                erc-mode-hook
+                eshell-mode-hook
+                vshell-mode-hook
+                deft-mode-hook
+                mu4e-headers-mode-hook
+                mu4e-view-mode-hook
+                mu4e-main-mode-hook
+                org-agenda-finalize-hook
+                go-test-mode-hook))
+  (add-hook mode
+            (lambda ()
+              (global-visual-line-mode 0))))
+
 (provide 'kw-writing)
