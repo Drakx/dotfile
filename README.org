@@ -29,7 +29,7 @@
   | C-% (C-shift 5) | Jump to matching brackets and back      |
 
 * Custom variables
-There are a some custom variables that can be enable for some niceties such as [[https://github.com/tumashu/vertico-posframe][~Vertico Posframe~]]
+There are a some custom variables that can be enable for some niceties such as ~[[https://github.com/tumashu/vertico-posframe][Vertico Posframe]]~
 
 ** Vertico
 *** Posframe
