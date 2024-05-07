@@ -171,6 +171,29 @@ folder, otherwise delete a character backwards"
 
 (global-set-key (kbd "C-%") 'my-jump-to-matching-bracket)
 
+;; Disable line numbers for some modes
+(defun kw/disable-line-numbers-mode ()
+  "Disable line numbers mode for various major modes."
+  (dolist (mode '(org-agenda-finalize-hook
+                  org-mode-hook
+                  term-mode-hook
+                  vterm-mode-hook
+                  shell-mode-hook
+                  erc-mode-hook
+                  treemacs-mode-hook
+                  eshell-mode-hook
+                  vshell-mode-hook
+                  deft-mode-hook
+                  dired-mode-hook
+                  elpher-mode-hook
+                  mu4e-headers-mode-hook
+                  mu4e-view-mode-hook
+                  mu4e-main-mode-hook))
+    (add-hook mode
+              (lambda ()
+                (display-line-numbers-mode 0)))))
 
+;; Call the function to ensure the hook is set up
+(kw/disable-line-numbers-mode)
 
 (provide 'kw-functions)
