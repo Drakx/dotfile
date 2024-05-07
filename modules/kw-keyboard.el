@@ -10,21 +10,11 @@
 ;; Allow hash to be entered when using a mac
 (pcase system-type
   ('darwin
-   (global-set-key (kbd "M-3")
-                   #'(lambda ()
-                       (interactive)
-                       (insert "#"))))
-
-  ;; Pressing ALT 3 should give us #
+   (message "Running on macOS")
+   (global-set-key (kbd "M-3") (lambda () (interactive) (insert "#"))))
   ('gnu/linux
-   (global-set-key (kbd "M-3")
-                   #'(lambda ()
-                       (interactive)
-                       (insert "#")))
-   ;; When I press shift 3 print £
-   (global-set-key (kbd "S-3")
-                   #'(lambda ()
-                       (interactive)
-                       (insert "£")))))
+   (message "Running on Linux")
+   (global-set-key (kbd "M-3") (lambda () (interactive) (insert "#")))
+   (global-set-key (kbd "S-3") (lambda () (interactive) (insert "£")))))
 
 (provide 'kw-keyboard)
