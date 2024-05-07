@@ -14,7 +14,7 @@
    (global-set-key (kbd "M-3") (lambda () (interactive) (insert "#"))))
   ('gnu/linux
    (message "Running on Linux")
-   (global-set-key (kbd "M-3") (lambda () (interactive) (insert "#")))
-   (global-set-key (kbd "S-3") (lambda () (interactive) (insert "£")))))
+   (global-set-key (kbd "S-3") (lambda () (interactive) (insert "#")))
+   (global-set-key (kbd "M-3") (lambda () (interactive) (insert "£")))))
 
 (provide 'kw-keyboard)
