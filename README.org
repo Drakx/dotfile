@@ -7,10 +7,11 @@
 This is my forth iteration of my Emacs config. This time I've taken a more ~modular~ approach.
 
 * The What
-[[https://github.com/Drakx/dotfiles/tree/master/emacs/.emacs.d][This version]] of my config was and still is fine, I really wanted a more 'slimmed' down version, so, gone is LSP, hello eglot, gone is Ivy and Councel. Hello Vertico, Orderless, Marginalia, Consult and Embark.
+[[https://github.com/Drakx/dotfiles/tree/master/emacs/.emacs.d][This version]] of my config was and still is fine, I really wanted a more 'slimmed' down version, so, gone is LSP, Ivy and Councel. Hello Vertico, Orderless, Marginalia, Consult and Embark. And finally hello Eglot.
 
 * The Why
 For this version I've decided that its time I learned vanilla Emacs key binds, however, evil is still included, just not enabled. With this in mind, I also decided its time to start using built in features of Emacs 29, like Eglot.
+I also wanted to just be able to clone the repo and start Emacs and let it do its own thing, downloading packages without having to ~tangle~ the org file.
 
 * Key maps
   | Key combination | Action                                  |
