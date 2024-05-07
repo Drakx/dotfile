@@ -33,11 +33,11 @@
 
 
 (require 'kw-package)
+(require 'kw-functions)
 (require 'kw-emacs)
 (require 'kw-completion)
 (require 'kw-writing)
 (require 'kw-help)
-(require 'kw-functions)
 (require 'kw-devel)
 (require 'kw-srccontrol)
 (require 'kw-frames)
@@ -57,3 +57,4 @@
 (require 'kw-www)
 (require 'kw-encryption)
 (require 'kw-keyboard)
+(require 'kw-org)
