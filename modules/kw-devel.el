@@ -59,33 +59,23 @@
   :ensure t
   :bind ("M-/" . evilnc-comment-or-uncomment-lines))
 
+(use-package eglot
+  :ensure t
+  :bind (:map eglot-mode-map
+              ("C-c C-a" . eglot-code-actions)
+              ("C-c C-r" . eglot-rename)
+              ("C-c g d" . eglot-find-definition))
+  :hook ((go-mode . eglot-ensure)
+         (zig-mode . eglot-ensure))
+  :config
+  (setq eglot-autoshutdown t
+        eglot-confirm-server-initiated-edits nil)
+  (add-to-list 'eglot-server-programs
+               '((go-mode) . ("gopls")
+		 (zig-moe) . ("zls"))))
 
 ;; Languages
 (require 'kw-languages)
-
-;; Markdown
-(use-package markdown-mode
-  :after lsp
-  :ensure t
-  :hook (markdown-mode . visual-line-mode))
-
-
-;; Yaml
-(use-package yaml-mode
-  :after lsp
-  :ensure t
-  :mode (("\\.yml\\'" . yaml-mode)
-         ("\\.yaml\\'" . yaml-mode)))
-
-;; JSON
-(use-package json-mode
-  :after lsp
-  :ensure t
-  :mode "\\.json\\'"
-  :config
-  (add-hook 'json-mode #'smartparens-mode)
-  (add-hook 'json-mode #'hs-minor-mode)
-  (add-hook 'json-mode #'flycheck-mode))
 
 ;; Web stuff
 (use-package web-mode
