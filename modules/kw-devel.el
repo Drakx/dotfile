@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
 ;; Paren Matching
-
 (use-package smartparens
   :hook (prog-mode . smartparens-mode)
   :config
@@ -62,6 +61,7 @@
 
 
 ;; Languages
+(require 'kw-languages)
 
 ;; Markdown
 (use-package markdown-mode
