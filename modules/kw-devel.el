@@ -70,9 +70,8 @@
   :config
   (setq eglot-autoshutdown t
         eglot-confirm-server-initiated-edits nil)
-  (add-to-list 'eglot-server-programs
-               '((go-mode) . ("gopls")
-		 (zig-moe) . ("zls"))))
+  (add-to-list 'eglot-server-programs '((go-mode . ("gopls"))
+                                       (zig-mode . ("zls")))))
 
 ;; Languages
 (require 'kw-languages)
