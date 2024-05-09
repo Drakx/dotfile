@@ -40,8 +40,10 @@
 ;; no ads, no JS, no tracking, etc, etc that you'll find on the normal internet.
 ;; Seems kinda cool, so I figured I'd give it look and see what happens. List of [[https://gemini.circumlunar.space/clients.html][Gemini Clients]]
 ;; https://git.carcosa.net/jmcbray/gemini.el just gives some syntax highlighting
+;; If you enjoy using Reddit, then I think you'll enjoy gemini://bbs.geminispace.org
 (use-package elpher)
 (use-package gemini-mode
+  :ensure t
   :mode "\\.gmi\\'")
 
 ;; IRC
