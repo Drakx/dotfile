@@ -35,6 +35,7 @@
         display-time-format "%H:%M %a, %d %b %Y"           ;; Formatted to UK standard
         backup-directory-alist `(("." . "~/.emacs.d/auto-saves"))
         undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))
+	make-backup-files           nil                    ;; Stop making ~
         )
 
   (defun kw/config-visit ()
