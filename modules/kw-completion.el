@@ -11,8 +11,8 @@
   (:map minibuffer-local-map
 	("<Backspace>" . minibuffer-backward-kill))
   :custom
-  (setq vertico-cycle t
-        vertico-resize nil)
+  (setq vertico-cycle t)
+  (setq vertico-resize nil)
   :config
   (add-hook 'vertico-mode-hook
             (lambda ()
