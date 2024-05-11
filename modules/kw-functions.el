@@ -156,7 +156,20 @@ folder, otherwise delete a character backwards"
 (defun kw/laptop-p ()
   "Check if the system is a laptop."
   (interactive)
-  (string-match-p "battery" (shell-command-to-string "ls /sys/class/power_supply")))
+  (cond
+   ((eq system-type 'gnu/linux)
+    (or (file-exists-p "/sys/class/power_supply/BAT0")
+        (file-exists-p "/sys/class/power_supply/battery")))
+   ((eq system-type 'darwin)
+    (let ((battery-info (shell-command-to-string "system_profiler SPPowerDataType")))
+      (or (string-match-p "Battery Information" battery-info)
+          (string-match-p "InternalBattery" battery-info))))
+   ((eq system-type 'windows-nt)
+    ;; For Windows, you may need a different approach to detect if it's a laptop.
+    (message "Detection for Windows not implemented yet."))
+   (t
+    (message "Unsupported system type"))))
+
 
 (defun my-jump-to-matching-bracket ()
   "Jump to the matching bracket."

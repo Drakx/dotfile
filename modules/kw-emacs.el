@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t -*-
 ;;
 ;; Main configuration of Emacs' UI along with some themes
+
 (use-package emacs
   :ensure nil
   :custom
@@ -67,16 +68,16 @@
 
 ;; If we are on a laptop then display the battery in the mode line.
 ;; 'kw/laptop-p' located in 'kw-functions.el'
-(require 'kw-functions)
 (if (kw/laptop-p)
+    (message "Laptop")
     (progn
       ;; Display the battery in the modeline
       (use-package battery
 	:ensure t
-	:hook (after-init . display-battery-mode))))
+	:hook (after-init . display-battery-mode)))
+    (message "Desktop"))
 
-
-;; Global keybinds
+;; Global key binds
 (global-set-key (kbd "C-c c e") 'kw/config-visit)
 (global-set-key (kbd "C-c c r") 'kw/reload-emacs-with-new-changes)
 
