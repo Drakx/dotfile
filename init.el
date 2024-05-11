@@ -58,3 +58,4 @@
 (require 'kw-encryption)
 (require 'kw-keyboard)
 (require 'kw-org)
+(require 'kw-org-roam)
