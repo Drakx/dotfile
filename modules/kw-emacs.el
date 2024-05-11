@@ -69,7 +69,6 @@
 ;; If we are on a laptop then display the battery in the mode line.
 ;; 'kw/laptop-p' located in 'kw-functions.el'
 (if (kw/laptop-p)
-    (message "Laptop")
     (progn
       ;; Display the battery in the modeline
       (use-package battery
