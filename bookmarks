@@ -1,0 +1,29 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("weather"
+ (position . 1)
+ (location . "gemini://gemi.dev/cgi-bin/chilly.cgi/view/lon=-1.7822482&lat=53.6466645&name=Huddersfield&state=England&country=GB/")
+ (handler . elpher-bookmark-jump))
+("gemini://station.martinrue.com/"
+ (position . 1)
+ (location . "gemini://station.martinrue.com/")
+ (handler . elpher-bookmark-jump))
+("gemini://bbs.geminispace.org/"
+ (position . 1)
+ (location . "gemini://bbs.geminispace.org/")
+ (handler . elpher-bookmark-jump))
+("alexschroeder.ch/Emacs (text/gemini, 12K)"
+ (position . 1)
+ (location . "gemini://alexschroeder.ch/Emacs")
+ (handler . elpher-bookmark-jump))
+("spool-five.com/gemlog/2022-12-08-emacs_youtube.gmi (text/gemini, 3K)"
+ (position . 1)
+ (location . "gemini://spool-five.com/gemlog/2022-12-08-emacs_youtube.gmi")
+ (handler . elpher-bookmark-jump))
+("Emacs YouTube"
+ (position . 1)
+ (location . "gemini://zote.smol.pub/emacs-elfeed-youtube")
+ (handler . elpher-bookmark-jump))
+)

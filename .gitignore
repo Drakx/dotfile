@@ -909,3 +909,6 @@ nvim/plugin/packer_compiled.lua
 /history
 /transient/
 /elpher-certificates/
+/*.eld
+/abbrev_defs
+/projects
