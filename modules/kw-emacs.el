@@ -8,6 +8,9 @@
   (completion-ignore-case t)                               ;; For completions ingore case
   (confirm-nonexistent-file-or-buffer nil)                 ;; Don't ask us to create the new file, just do it
   :config
+  (add-to-list 'default-frame-alist '(width . 140))
+  (add-to-list 'default-frame-alist '(height . 50))
+
   (tool-bar-mode      0)                                   ;; Remove toolbar
   (scroll-bar-mode    0)                                   ;; Remove scrollbar
   (menu-bar-mode      0)                                   ;; Remove menu bar

@@ -170,7 +170,6 @@ folder, otherwise delete a character backwards"
    (t
     (message "Unsupported system type"))))
 
-
 (defun my-jump-to-matching-bracket ()
   "Jump to the matching bracket."
   (interactive)
