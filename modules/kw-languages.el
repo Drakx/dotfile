@@ -21,16 +21,24 @@
 (use-package go-mode
   :ensure t
   :mode "\\.go\\'"
-  :hook ((go-mode . eglot-ensure)
-         (before-save . kw/go-install-save-hooks)
-         (go-mode . flycheck-golangci-lint-setup))
+  :hook
+  ((go-mode . eglot-ensure)                     ; Enable eglot for Go files
+   (before-save . kw/go-install-save-hooks)     ; Install save hooks
+   (go-mode . flycheck-golangci-lint-setup))    ; Setup flycheck for linting
   :config
-  (setq go-indent-offset 4
-        gofmt-command "goimports"
-        indent-tabs-mode nil)
+  ;; Set indentation settings
+  (setq go-indent-offset 4                      ; Indentation offset
+        gofmt-command "goimports"               ; Use goimports for formatting
+        indent-tabs-mode nil)                   ; Use spaces instead of tabs
+
+  ;; Set default tab width
   (setq-default tab-width 4)
+
+  ;; Enable flycheck with golangci-lint
   (use-package flycheck-golangci-lint
     :ensure t)
+
+  ;; Enable company mode for auto-completion
   (company-mode t))
 
 (use-package company-go

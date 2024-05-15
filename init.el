@@ -31,7 +31,6 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-
 (require 'kw-package)
 (require 'kw-functions)
 (require 'kw-emacs)
