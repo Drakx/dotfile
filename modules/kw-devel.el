@@ -72,6 +72,14 @@
   :hook ((go-mode . eglot-ensure)
          (zig-mode . eglot-ensure))
   :config
+  (eglot-ignored-server-capabilities
+   '(:hoverProvider
+     :documentHighlightProvider
+     :documentFormattingProvider
+     :documentRangeFormattingProvider
+     :documentOnTypeFormattingProvider
+     :colorProvider
+     :foldingRangeProvider))
   (setq eglot-autoshutdown t
         eglot-confirm-server-initiated-edits nil)
   (add-to-list 'eglot-server-programs '((go-mode . ("gopls"))
@@ -112,35 +120,34 @@
 ;; Dap mode allows us to debug apps within emacs, for easier use run ~dap-hydra~ and you'll be
 ;; presented with a very easy to follow/use menu mode
 ;; The python stuff is taken from https://emacs-lsp.github.io/dap-mode/page/python-poetry-pyenv/
-(use-package dap-mode
-  :after eglot
-  :ensure t
-  :commands dap-debug
-  :hook ((eglot--managed-mode . dap-mode)
-         (python-mode . dap-ui-mode)
-         (python-mode . dap-mode)
-         (go-mode . dap-mode)
-         (go-mode . dap-ui-mode))
-  :config
-  (require 'dap-hydra)
-  (require 'dap-go)
-  ;; (require 'dap-python)
-  (setq dap-python-debugger 'debugpy)
-  (defun dap-python--pyenv-executable-find (command)
-    (with-venv (executable-find "python")))
-  (dap-go-setup)
-  (dap-ui-mode 1)
-  (dap-tooltip-mode 1) ;; Enable mouse hover support
-  (dap-ui-controls-mode 1)
-  ;; Bind `C-c l d` to `dap-hydra` for easy access
-  (general-define-key
-   :keymaps 'eglot-mode-map
-   :prefix eglot--managed-mode-map-prefix
-   "d" '(dap-hydra t :wk "debugger"))
-  ;;:custom dap-auto-configure-features '(sessions locals controls tooltip)
-
-  (add-hook 'dap-stopped-hook
-            (lambda (arg) (call-interactively #'dap-hydra))))
+;; (use-package dap-mode
+;;   :after eglot
+;;   :ensure t
+;;   :commands dap-debug
+;;   :hook ((eglot--managed-mode . dap-mode)
+;;          (python-mode . dap-ui-mode)
+;;          (python-mode . dap-mode)
+;;          (go-mode . dap-mode)
+;;          (go-mode . dap-ui-mode))
+;;   :config
+;;   (require 'dap-hydra)
+;;   (require 'dap-go)
+;;   ;; (require 'dap-python)
+;;   (setq dap-python-debugger 'debugpy)
+;;   (defun dap-python--pyenv-executable-find (command)
+;;     (with-venv (executable-find "python")))
+;;   (dap-go-setup)
+;;   (dap-ui-mode 1)
+;;   (dap-tooltip-mode 1) ;; Enable mouse hover support
+;;   (dap-ui-controls-mode 1)
+;;   ;; Bind `C-c l d` to `dap-hydra` for easy access
+;;   (general-define-key
+;;    :keymaps 'eglot-mode-map
+;;    :prefix eglot--managed-mode-map-prefix
+;;    "d" '(dap-hydra t :wk "debugger"))
+;;   ;;:custom dap-auto-configure-features '(sessions locals controls tooltip)
+;;   (add-hook 'dap-stopped-hook
+;;             (lambda (arg) (call-interactively #'dap-hydra))))
 
 
 (provide 'kw-devel)
