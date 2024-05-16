@@ -109,4 +109,12 @@
   :custom
   (all-the-icons-dired-monochrome nil))
 
+;; Start SSH agent
+(when (and (executable-find "ssh-agent") (not (getenv "SSH_AGENT_PID")))
+  (shell-command "eval \"$(ssh-agent -s)\""))
+
+;; Add SSH key to agent
+(when (and (executable-find "ssh-add") (not (getenv "SSH_AUTH_SOCK")))
+  (shell-command "ssh-add ~/.ssh/id_ed25519"))
+
 (provide 'kw-emacs)
