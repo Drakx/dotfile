@@ -34,6 +34,10 @@
    (projectile-project-search-path '(project-location))
    (projectile-switch-project-action #'projectile-dired)))
 
+(use-package counsel-projectile
+  :bind
+  (("C-c p f" . counsel-projectile-find-file)))
+
 (use-package flycheck
   :ensure t
   :hook ((python-mode
@@ -71,7 +75,14 @@
   (setq eglot-autoshutdown t
         eglot-confirm-server-initiated-edits nil)
   (add-to-list 'eglot-server-programs '((go-mode . ("gopls"))
-                                       (zig-mode . ("zls")))))
+                                        (zig-mode . ("zls")))))
+
+(use-package dape-mode
+  :ensure t
+  :bind (:map dape-mode-map
+              ("<f7>" . dape-step-in)
+              ("<f8>" . dape-next)
+              ("<f9>" . dape-continue)))
 
 ;; Languages
 (require 'kw-languages)
@@ -119,17 +130,17 @@
     (with-venv (executable-find "python")))
   (dap-go-setup)
   (dap-ui-mode 1)
-  (dap-ui-mode 1)
-  (dap-tooltip-mode 1);; Enable mouse hover support
+  (dap-tooltip-mode 1) ;; Enable mouse hover support
   (dap-ui-controls-mode 1)
   ;; Bind `C-c l d` to `dap-hydra` for easy access
   (general-define-key
    :keymaps 'eglot-mode-map
-   :prefix eglot--managed-mode-map-prefix "d" '(dap-hydra t :wk "debugger"))
+   :prefix eglot--managed-mode-map-prefix
+   "d" '(dap-hydra t :wk "debugger"))
   ;;:custom dap-auto-configure-features '(sessions locals controls tooltip)
-  ;;(dap-mode 1)
 
   (add-hook 'dap-stopped-hook
             (lambda (arg) (call-interactively #'dap-hydra))))
+
 
 (provide 'kw-devel)
