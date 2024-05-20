@@ -84,6 +84,13 @@
 
 (use-package markdown-mode
   :ensure t
+  :mode (("\\.md\\'" . markdown-mode))
   :hook (markdown-mode . visual-line-mode))
+
+(unless (package-installed-p 'lua-mode)
+  (use-package lua-mode
+    :demand t
+    :mode (("\\.lua'" . lua-mode))))
+
 
 (provide 'kw-languages)

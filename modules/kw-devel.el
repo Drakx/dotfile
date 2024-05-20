@@ -1,5 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Enable line numbers in prog-mode
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+
 ;; Paren Matching
 (use-package smartparens
   :hook (prog-mode . smartparens-mode)
@@ -70,6 +73,7 @@
               ("C-c C-r" . eglot-rename)
               ("C-c g d" . eglot-find-definition))
   :hook ((go-mode . eglot-ensure)
+	 (lua-mode . eglot-ensure)
          (zig-mode . eglot-ensure))
   :config
   (eglot-ignored-server-capabilities
@@ -83,6 +87,7 @@
   (setq eglot-autoshutdown t
         eglot-confirm-server-initiated-edits nil)
   (add-to-list 'eglot-server-programs '((go-mode . ("gopls"))
+					(python-mode . ("pylsp"))
                                         (zig-mode . ("zls")))))
 
 (use-package dape-mode
