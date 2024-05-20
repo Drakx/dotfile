@@ -2,6 +2,10 @@
 ;;
 ;; Main configuration of Emacs' UI along with some themes
 
+;; Performance tweaks for modern machines
+(setq gc-cons-threshold 100000000) ; 100 mb
+(setq read-process-output-max (* 1024 1024)) ; 1mb
+
 (use-package emacs
   :ensure nil
   :custom
