@@ -120,29 +120,39 @@
 ;; solution.
 (use-package corfu
   :ensure t
-  :init
-  (global-corfu-mode)
   :custom
-  (corfu-auto t)
-  (corfu-cycle t)
+  (corfu-auto t)                 ;; Enable auto completion
+  (corfu-cycle t)                ;; Enable cycling for `corfu` completions
   (corfu-separator ?\s)          ;; Orderless field separator
-  ;; You may want to play with delay/prefix/styles to suit your preferences.
-  (corfu-auto-delay 0)
-  (corfu-auto-prefix 0)
-  (completion-styles '(basic))
-  :hook ((prog-mode . corfu-mode)
+  (corfu-auto-delay 0)           ;; No delay for auto completion
+  (corfu-auto-prefix 0)          ;; Start auto completion without typing prefix
+
+  :hook ((prog-mode . corfu-mode) ;; Enable corfu in programming modes
          (shell-mode . corfu-mode)
          (eat-mode . corfu-mode)
-	 (go-mode . corfu-mode)
-	 (zig-mode . corfu-mode)
-	 (lua-mode . corfu-mode)
-	 (python-mode . corfu-mode)
-	 (web-mode . corfu-mode))
+         (go-mode . corfu-mode)
+         (zig-mode . corfu-mode)
+         (lua-mode . corfu-mode)
+         (python-mode . corfu-mode)
+         (web-mode . corfu-mode))
   :bind
   (:map corfu-map
         ("TAB" . corfu-next)
         ([tab] . corfu-next)
         ("S-TAB" . corfu-previous)
-        ([backtab] . corfu-previous)))
+        ([backtab] . corfu-previous)
+	("<escape>" corfu-quit))
+  :init
+  (global-corfu-mode)
+  :config
+  (corfu-popupinfo-mode))
+
+;; Enable icons in completions
+(use-package nerd-icons-corfu
+  :ensure t
+  :after (corfu nerd-icons)
+  :config
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
+  (nerd-icons-corfu-mode))
 
 (provide 'kw-completion)
