@@ -61,7 +61,10 @@
     "Measure and return the time it takes evaluating BODY."
     `(let ((time (current-time)))
        ,@body
-       (float-time (time-since time)))))
+       (float-time (time-since time))))
+  ;; Enable indentation+completion using the TAB key.
+  ;; `completion-at-point' is often bound to M-TAB.
+  (setq tab-always-indent 'complete))
 
 
 (use-package doom-modeline

@@ -88,29 +88,54 @@
 ;; which is more reminiscent of what you would expect from an IDE.
 ;; We add a simple configuration to make the keybindings a little more useful (=TAB= now completes the selection and initiates completion at the current location if needed).
 ;; We also use https://github.com/sebastiencs/company-box to further enhance the look of the completions with icons and better overall presentation.
-(use-package company
-  :after lsp-mode
-  :hook (lsp-mode . company-mode)
-  :bind (:map company-active-map
-              ;;("<tab>" . company-complete-selection)
-              ("<tab>" . company-complete-common-or-cycle))
-  (:map lsp-mode-map
-        ("<tab>" . company-indent-or-complete-common))
+;; (use-package company
+;;   :after lsp-mode
+;;   :hook (lsp-mode . company-mode)
+;;   :bind (:map company-active-map
+;;               ;;("<tab>" . company-complete-selection)
+;;               ("<tab>" . company-complete-common-or-cycle))
+;;   (:map lsp-mode-map
+;;         ("<tab>" . company-indent-or-complete-common))
+;;   :custom
+;;   (company-minimum-prefix-length 1)
+;;   (company-idle-delay 0.0)
+;;   :config
+;;   (bind-key "C-n" 'company-select-next company-active-map)
+;;   (bind-key "C-p" 'company-select-previous company-active-map)
+;;   :hook ((emacs-lisp-mode
+;;           python-mode
+;;           go-mode
+;;           zig-mode
+;;           web-mode
+;;           restclient-mode) . company-mode))
+
+;; (use-package company-box
+;;   :hook (company-mode . company-box-mode))
+
+;; Adds intellisense-style code completion at point that works great
+;; with LSP via Eglot. You'll likely want to configure this one to
+;; match your editing preferences, there's no one-size-fits-all
+;; solution.
+(use-package corfu
+  :ensure t
+  :init
+  (global-corfu-mode)
   :custom
-  (company-minimum-prefix-length 1)
-  (company-idle-delay 0.0)
-  :config
-  (bind-key "C-n" 'company-select-next company-active-map)
-  (bind-key "C-p" 'company-select-previous company-active-map)
-  :hook ((emacs-lisp-mode
-          python-mode
-          go-mode
-          zig-mode
-          web-mode
-          restclient-mode) . company-mode))
-
-(use-package company-box
-  :hook (company-mode . company-box-mode))
-
+  (corfu-auto t)
+  (corfu-cycle t)
+  (corfu-separator ?\s)          ;; Orderless field separator
+  ;; You may want to play with delay/prefix/styles to suit your preferences.
+  (corfu-auto-delay 0)
+  (corfu-auto-prefix 0)
+  (completion-styles '(basic))
+  :hook ((prog-mode . corfu-mode)
+         (shell-mode . corfu-mode)
+         (eat-mode . corfu-mode))
+  :bind
+  (:map corfu-map
+        ("TAB" . corfu-next)
+        ([tab] . corfu-next)
+        ("S-TAB" . corfu-previous)
+        ([backtab] . corfu-previous)))
 
 (provide 'kw-completion)
