@@ -208,4 +208,44 @@ folder, otherwise delete a character backwards"
 ;; Call the function to ensure the hook is set up
 (kw/disable-line-numbers-mode)
 
+;; Count down with
+(defvar countdown-timer nil
+  "Timer object for countdown.")
+
+(defun notify-xfce (title message)
+  "Send a notification with TITLE and MESSAGE using notify-send in XFCE4."
+  (start-process "notify-send"
+                 "*notify-send*"
+                 "notify-send"
+                 title
+                 message))
+
+(defun kw/countdown (minutes)
+  "Countdown from MINUTES and send a notification when done."
+  (interactive "nCountdown minutes: ")
+  (when countdown-timer
+    (cancel-timer countdown-timer)
+    (setq countdown-timer nil)
+    (message "Previous countdown timer canceled."))
+  (let ((seconds (* minutes 60)))
+    (message "Countdown started: %d minutes" minutes)
+    (setq countdown-timer
+          (run-with-timer
+           seconds
+           nil
+           (lambda ()
+             (notify-xfce "Emacs Timer" (format "Your %d minute timer is up!" minutes))
+             (setq countdown-timer nil))))))
+
+(defun kw/cancel-countdown ()
+  "Cancel the countdown timer."
+  (interactive)
+  (when countdown-timer
+    (cancel-timer countdown-timer)
+    (setq countdown-timer nil)
+    (message "Countdown timer canceled."))
+  (unless countdown-timer
+    (message "No active countdown timer to cancel.")))
+
+
 (provide 'kw-functions)
