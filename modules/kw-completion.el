@@ -130,7 +130,12 @@
   (completion-styles '(basic))
   :hook ((prog-mode . corfu-mode)
          (shell-mode . corfu-mode)
-         (eat-mode . corfu-mode))
+         (eat-mode . corfu-mode)
+	 (go-mode . corfu-mode)
+	 (zig-mode . corfu-mode)
+	 (lua-mode . corfu-mode)
+	 (python-mode . corfu-mode)
+	 (web-mode . corfu-mode))
   :bind
   (:map corfu-map
         ("TAB" . corfu-next)
