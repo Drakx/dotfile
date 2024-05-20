@@ -47,8 +47,10 @@
 
 (use-package orderless
   :ensure t
-  :config
-  (setq completion-styles '(orderless basic)))
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides
+   '((file (styles partial-completion basic)))))
 
 (use-package consult
   :ensure t
