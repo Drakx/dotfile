@@ -28,4 +28,12 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
+;; Testing...
+(unless (package-installed-p 'eat)
+  (use-package eat
+    :demand t
+    :config
+    (setq eat-kill-buffer-on-exit t
+	  eat-enable-mouse t)))
+
 (provide 'kw-shell)
